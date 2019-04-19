@@ -50,8 +50,34 @@ const removeNote = (title) =>{
         console.log(chalk.red.inverse('No note found'));
     } 
 }
+
+
+const listNotes = () => {
+    var list = loadNotes();
+    console.log(chalk.green.inverse('Your Notes...'));
+        for(i in list){
+            console.log(chalk.yellow(list[i].title));
+            console.log(list[i].body);
+        }
+        console.log(chalk.green.inverse('End of Notes'));
+}
+
+const readNote= (title) => {
+    notes = loadNotes();
+    note = notes.find((x) => x.title === title);
+
+    if (note){
+        console.log(chalk.yellow.inverse(note.title));
+        console.log(note.body);
+    }else{
+        console.log(chalk.red.inverse('ERROR: No note found'));
+    }
+}
+
 module.exports = {
     loadNotes: loadNotes,
     addNotes: addNotes,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes,
+    readNote: readNote
 };
