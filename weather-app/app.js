@@ -1,11 +1,19 @@
 const request = require('request');
 
-const url = "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1Ijoicnlhbm9sZWUxMSIsImEiOiJjanVzcHE4Y2szenVmNGRvYTBsenoxZWJsIn0.dXD3f9gEZpMrkZ4ztSFcfA"
+const url = "https://api.mapbox.com/geocoding/v5/mapbox.places/los angeles.json?access_token=pk.eyJ1Ijoicnlhbm9sZWUxMSIsImEiOiJjanVzcHE4Y2szenVmNGRvYTBsenoxZWJsIn0.dXD3f9gEZpMrkZ4ztSFcfA"
 
 
 request({url: url, json: true}, (error, response)=> {
-    console.log(response.body.features[0].geometry.coordinates[0]);
-    console.log(response.body.features[0].geometry.coordinates[1]);
+
+    if (error){
+        console.log('unable to connect to mapbox');
+    }else if (response.body.features.length == 0){
+        console.log('unable to find location');
+    }
+    else{
+        console.log(response.body.features[0].geometry.coordinates[0]);
+        console.log(response.body.features[0].geometry.coordinates[1]);
+    }
 })
 
 // const url ="https://api.darksky.net/forecast/5052b3653fee1ea15f3ea3770df03f3e/37.8267,-122.4233";
