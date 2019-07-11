@@ -7,13 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css">
     <link rel="icon" href="/img/weather.png">
-    <script src="/js/main.js"></script>
+    
 </head>
 <body>
     <div class="main-content">
     {{>header}}
     <p>This is the home page</p>
+    <form>
+            <input placeholder="Location">
+            <button>Search</button>
+    </form>
+
+    <p id="message-1"></p>
+    <p id="message-2"></sp>
     </div>
     {{>footer}}
+    <script src="/js/main.js"></script>
 </body>
 </html>
